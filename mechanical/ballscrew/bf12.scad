@@ -1,5 +1,5 @@
 module bearing6000zz(){
-	difference(){
+	color([0.8,0.8,0.8])difference(){
 		cylinder(h=8, r=13, center=true, $fn=40);
 		cylinder(h=9, r=5, center=true, $fn=40);	
 	}
@@ -7,7 +7,7 @@ module bearing6000zz(){
 
 
 module bf12() {
-	difference(){
+	color([0.2,0.2,0.2])difference(){
 		linear_extrude(height = 20, center = true, convexity = 10, $fn=40)
 	   		import (file = "bf12.dxf", layer = "0");
 	   	translate([23,-5,0])rotate([90,0,0])cylinder(h=50, r=3.3, center=true, $fn=40);
