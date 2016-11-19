@@ -41,8 +41,19 @@ translate([-170,0,68+gantry_position])rotate([270,0,0])sbr12(400);
 
 
 
-color([0.7,0.5,0.0])translate([-24,0,0])cube([10,360-24,700], center=true);
 
+module bed(){
+	difference(){
+		color([0.7,0.5,0.0])translate([-24,0,0])cube([10,360-24,700], center=true);
+		for(y = [-6 : 6]){
+			for(x = [-3: 3])
+				translate([-20, x*50, y*50])rotate([0,90,0]) cylinder(h=20, r=4, center=true, $fn=20);
+		}	
+	}
+	
+}
+
+bed();
 //dimension_peices();
 
 base();
