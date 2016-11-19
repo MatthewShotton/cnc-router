@@ -12,7 +12,7 @@ module dimension_peices(){
 
 
 
-gantry_position = -270;
+gantry_position = 260;
 
 module side_rails(gantry_position=0){
 	sbr12(700);
@@ -35,8 +35,8 @@ translate([0,200,0])side_rails(gantry_position);
 translate([0,-200,0])mirror([0,1,0])side_rails(gantry_position);
 
 
-translate([-120,0,68+gantry_position])rotate([270,0,0])sbr12(400);
-translate([-170,0,68+gantry_position])rotate([270,0,0])sbr12(400);
+translate([-120,0,68+gantry_position])rotate([270,0,0])sbr12(500);
+translate([-170,0,68+gantry_position])rotate([270,0,0])sbr12(500);
 //translate([30,0,0])cube([10,435,120], center=true);
 
 
