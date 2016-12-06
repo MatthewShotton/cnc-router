@@ -13,9 +13,9 @@ module dimension_peices(){
 	translate([50,0,-5])cube([50,10,633], center=true);
 }
 
+//dimension_peices();
 
-
-gantry_position = 260;
+gantry_position = -260;
 
 module side_rails(gantry_position=0){
 	sbr12(700);
@@ -69,6 +69,7 @@ module drag_chain_shelves(){
 
 drag_chain_shelves();
 bed();
+bed_supports();
 //dimension_peices();
 
 base();
