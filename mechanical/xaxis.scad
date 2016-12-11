@@ -14,9 +14,16 @@ module dimension_peices(){
 
 //dimension_peices();
 
-gantry_position = 0;
-y_position = 50;
+// Cutting bed dimensions
+// ----------------------
+// 290 x 540 x 60
+//
+//translate([-25,0,0])cube([60,290,540],center=true);
+
+gantry_position = -270;
+y_position = 0;
 z_position = 20;
+
 
 module side_rails(gantry_position=0){
 	difference(){
@@ -71,13 +78,17 @@ module drag_chain_shelves(){
 	translate([-41,-180.5,0])rotate([180,0,0])drag_chain_shelf(700);
 }
 
-translate([57,180,0])cube([12,40,140], center=true);
-translate([57-12,0,0])cube([12,400,140], center=true);
+translate([57,180,gantry_position])cube([12,40,140], center=true);
+translate([57,-180,gantry_position])cube([12,40,140], center=true);
+translate([57-12,0,gantry_position])cube([12,400,140], center=true);
 
 //drag_chain_shelves();
-gantry(y_position, z_position);
+translate([0,0,gantry_position])gantry(y_position, z_position);
 bed();
 y_hardware(gantry_position);
+
+
+translate([107.5,0,0])cube([10,390,700], center=true);
 //dimension_peices();
 //base();
 //translate([-140,-218,gantry_position-120])rotate([90,0,0])stepper_motor_mount(23);

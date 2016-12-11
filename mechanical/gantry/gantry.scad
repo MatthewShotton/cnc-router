@@ -7,6 +7,22 @@ use <../z-axis/sk8.scad>
 use <../spindle/spindle.scad>
 use <MCAD/motors.scad>
 
+
+module gantry_wood(y_position=0, forward_offset=0){
+	translate([-109,0,forward_offset-62])cube(size=[12,400,50], center=true);
+	translate([-181,0,forward_offset-62])cube(size=[12,400,50], center=true);
+	translate([-145,0,forward_offset-83])cube(size=[84,400,12], center=true);
+	
+	translate([-145,y_position,forward_offset-96])cube(size=[163,102,12], center=true);
+	translate([-145,y_position,forward_offset-26])cube(size=[163,102,12], center=true);
+
+	translate([-232,y_position,forward_offset-42])cube(size=[12,102,120], center=true);
+	translate([-58,y_position,forward_offset-42])cube(size=[12,102,120], center=true);
+	
+	//translate([-191,0,forward_offset-77])cube(size=[10,400,10], center=true);
+	//translate([-145,y_position+50,forward_offset-50])cube(size=[163,12,60], center=true);
+}
+
 module gantry(y_position = 0, z_position=0){
 	// translate([30,0,0])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	// 	import (file = "parts.dxf", layer = "gantry-base");
@@ -15,22 +31,24 @@ module gantry(y_position = 0, z_position=0){
 	// translate([36,-223.5,0])rotate([0,-90,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	// 	import (file = "parts.dxf", layer = "gantry-side");
 
-	forward_offset = -16;
+	forward_offset = -60;
 
-	translate([-92.5 + 12,0,-68])rotate([270,-90,0]){
+	color([0.5,0.3,0.1])gantry_wood(y_position, forward_offset);
+
+	translate([-92.5 + 12,0,-68+forward_offset+16])rotate([270,-90,0]){
+		translate([0,0,0])sbr12(400);
+		translate([0,0,-20 + y_position])sbr12uu();
+		translate([0,0,20 + y_position])sbr12uu();
+
+	}
+	translate([-197.5 - 12,0,-68+forward_offset+16])rotate([270,90,0]){
 		sbr12(400);
 		translate([0,0,-20 + y_position])sbr12uu();
 		translate([0,0,20 + y_position])sbr12uu();
 
 	}
-	translate([-197.5 - 12,0,-68])rotate([270,90,0]){
-		sbr12(400);
-		translate([0,0,-20 + y_position])sbr12uu();
-		translate([0,0,20 + y_position])sbr12uu();
-
-	}
-	translate([-145,0,-68])rotate([90,0,0])leadscrew400mm();
-	translate([-145,y_position,-68])rotate([-90,0,0])sfu1604();
+	translate([-145,0,-68+forward_offset+16])rotate([90,0,0])leadscrew400mm();
+	translate([-145,y_position,-68+forward_offset+16])rotate([-90,0,0])sfu1604();
 
 	translate([-65.5,y_position,forward_offset])rotate([90,0,90])fl08();
 	translate([-224.5,y_position,forward_offset])rotate([-90,0,90])fl08();
@@ -41,12 +59,12 @@ module gantry(y_position = 0, z_position=0){
 		translate([-145,y_position-30,forward_offset])rotate([-90,0,90])cylinder(h=200, r=4, center=true, $fn=20);
 	}
 
-	translate([-145+z_position,y_position,forward_offset+17])cube(size=[40,90,12], center=true);
+	translate([-145+z_position,y_position,forward_offset+17])cube(size=[61,94,12], center=true);
 
-	translate([-145+z_position-20, y_position+30, forward_offset])rotate([90,0,90])sc8uu();
-	translate([-145+z_position-20, y_position-30, forward_offset])rotate([90,0,90])sc8uu();
-	translate([-145+z_position+20, y_position+30, forward_offset])rotate([90,0,90])sc8uu();
-	translate([-145+z_position+20, y_position-30, forward_offset])rotate([90,0,90])sc8uu();
+	translate([-145+z_position-15.5, y_position+30, forward_offset])rotate([90,0,90])sc8uu();
+	translate([-145+z_position-15.5, y_position-30, forward_offset])rotate([90,0,90])sc8uu();
+	translate([-145+z_position+15.5, y_position+30, forward_offset])rotate([90,0,90])sc8uu();
+	translate([-145+z_position+15.5, y_position-30, forward_offset])rotate([90,0,90])sc8uu();
 
 	translate([-145-70, y_position+30, forward_offset])rotate([90,0,90])sk8();
 	translate([-145-70, y_position-30, forward_offset])rotate([90,0,90])sk8();
@@ -54,9 +72,14 @@ module gantry(y_position = 0, z_position=0){
 	translate([-145+70, y_position-30, forward_offset])rotate([90,0,90])sk8();
 
 
-	translate([-145+z_position, y_position, forward_offset+52])rotate([90,0,90])spindle();
+	translate([-145+z_position, y_position, forward_offset+57])rotate([90,0,90])spindle();
+	translate([-145+z_position, y_position, forward_offset+57])rotate([90,0,90])spindle_mount();
 
 	translate([-275, y_position, forward_offset])rotate([90,0,90])stepper_motor_mount(17);
+
+
+
+	translate([-145, 254, forward_offset-52])rotate([90,0,0])stepper_motor_mount(23);
 
 }
 

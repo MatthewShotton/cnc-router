@@ -6,3 +6,15 @@ module spindle(){
 		translate([0,0,76])cylinder(h=52, r=10, center=true, $fn=20);	
 	}
 }
+
+
+module spindle_mount(){
+	difference(){
+		color([0.7,0.7,0.7])linear_extrude(height = 40, center = true, convexity = 10, $fn=40)
+		    import (file = "spindle_mount.dxf", layer = "0");
+		translate([35,-20,10])rotate([90,0,0])cylinder(h=100, r=6.5/2, center=true, $fn=20);
+		translate([35,-20,-10])rotate([90,0,0])cylinder(h=100, r=6.5/2, center=true, $fn=20);
+		translate([-35,-20,-10])rotate([90,0,0])cylinder(h=100, r=6.5/2, center=true, $fn=20);
+		translate([-35,-20,10])rotate([90,0,0])cylinder(h=100, r=6.5/2, center=true, $fn=20);
+	}
+}
