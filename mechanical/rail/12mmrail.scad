@@ -7,10 +7,10 @@ module sbr12uu() {
 	difference(){
 		color([0.6,0.6,0.6])linear_extrude(height = 39, center = true, convexity = 10, $fn=40)
 			import (file = "12mmrail.dxf", layer = "sbr12uu-side");
-		translate([14, 15, 13])rotate([90,0,0])cylinder(h=20, r=2, center=true, $fn=20);
-		translate([14, 15, -13])rotate([90,0,0])cylinder(h=20, r=2, center=true, $fn=20);
-		translate([-14, 15, 13])rotate([90,0,0])cylinder(h=20, r=2, center=true, $fn=20);
-		translate([-14, 15, -13])rotate([90,0,0])cylinder(h=20, r=2, center=true, $fn=20);	
+		translate([14, 15, 13])rotate([90,0,0])cylinder(h=60, r=2, center=true, $fn=20);
+		translate([14, 15, -13])rotate([90,0,0])cylinder(h=60, r=2, center=true, $fn=20);
+		translate([-14, 15, 13])rotate([90,0,0])cylinder(h=60, r=2, center=true, $fn=20);
+		translate([-14, 15, -13])rotate([90,0,0])cylinder(h=60, r=2, center=true, $fn=20);	
 	}
 }
 

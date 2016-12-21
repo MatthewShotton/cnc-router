@@ -13,6 +13,7 @@ module leadscrew600mm(){
 
 	translate([0,0,-309])bk12();
 	translate([0,0,301.5])mirror([0,0,1])bf12();
+	// 309+6.5
 }
 
 
