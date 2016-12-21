@@ -51,7 +51,7 @@ module gantry_wood(y_position=0, forward_offset=0){
 	color([0.1,0.5,0.3])translate([45,-206,forward_offset+60])rotate([90,-90,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	    import (file = "../frame.dxf", layer = "gantry_side");
 	color([0.1,0.5,0.3])translate([45,206,forward_offset+60])rotate([90,-90,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-	    import (file = "../frame.dxf", layer = "gantry_side");
+	    import (file = "../frame.dxf", layer = "gantry_side_motor");
 
 }
 
@@ -94,7 +94,9 @@ module gantry(y_position = 0, z_position=0){
 		translate([-145,y_position-30,forward_offset])rotate([-90,0,90])cylinder(h=200, r=4, center=true, $fn=20);
 	}
 
-	// translate([-145+z_position,y_position,forward_offset+17])cube(size=[61,94,12], center=true);
+	translate([-145+z_position,y_position,forward_offset+17])rotate([0,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "../frame.dxf", layer = "spindle_plate");
+
 
 	translate([-145+z_position-15.5, y_position+30, forward_offset])rotate([90,0,90])sc8uu();
 	translate([-145+z_position-15.5, y_position-30, forward_offset])rotate([90,0,90])sc8uu();
@@ -107,8 +109,8 @@ module gantry(y_position = 0, z_position=0){
 	translate([-145+70, y_position-30, forward_offset])rotate([90,0,90])sk8();
 
 
-	// translate([-145+z_position, y_position, forward_offset+57])rotate([90,0,90])spindle();
-	// translate([-145+z_position, y_position, forward_offset+57])rotate([90,0,90])spindle_mount();
+	translate([-145+z_position, y_position, forward_offset+57])rotate([90,0,90])spindle();
+	translate([-145+z_position, y_position, forward_offset+57])rotate([90,0,90])spindle_mount();
 
 	translate([-275, y_position, forward_offset - 1])rotate([90,0,90])stepper_motor_mount(17);
 	translate([-145, 254, forward_offset-52])rotate([90,0,0])stepper_motor_mount(23);

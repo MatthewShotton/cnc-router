@@ -20,7 +20,7 @@ module dimension_peices(){
 //
 //translate([-25,0,0])cube([60,290,540],center=true);
 
-gantry_position = -270;
+gantry_position = -200;
 y_position = 0;
 z_position = 20;
 
@@ -80,6 +80,18 @@ module gantry_base(){
 module main_base(){
 	color([0.7,0.5,0.0])translate([108.5,0,0])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
         import (file = "frame.dxf", layer = "base");
+
+    color([0.5,0.3,0.7])translate([80,-100,0])rotate([90,0,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "frame.dxf", layer = "base_ribs");
+
+	color([0.5,0.3,0.7])translate([80,100,0])rotate([90,0,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "frame.dxf", layer = "base_ribs");
+
+
+	color([0.7,0.5,0.3])translate([114.5,0,-356])rotate([0,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "frame.dxf", layer = "base_front");
+	color([0.7,0.5,0.3])translate([114.5,0,356])rotate([0,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "frame.dxf", layer = "base_front");
 }
 
 main_base();
@@ -87,6 +99,6 @@ gantry_base();
 
 translate([0,0,gantry_position])gantry(y_position, z_position);
 bed();
- y_hardware(gantry_position);
+y_hardware(gantry_position);
 
 
