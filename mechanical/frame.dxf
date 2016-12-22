@@ -91,7 +91,7 @@ STANDARD
   9
 $CLAYER
   8
-bed
+gantry_side_motor
   9
 $CELTYPE
   6
@@ -1115,9 +1115,9 @@ AcDbViewportTableRecord
  21
 1
  12
-101.4992211838953
+101.8115264798459
  22
--89.31931464182787
+127.1082554518322
  13
 0
  23
@@ -1143,9 +1143,9 @@ AcDbViewportTableRecord
  37
 0
  40
-471.5809968851751
+471.5809968851759
  41
-0.7496688741721854
+0.8278145695364238
  42
 50
  43
@@ -2323,7 +2323,7 @@ AcDbLayerTableRecord
   2
 bed
  70
-    0
+    5
  62
     7
   6
@@ -2411,7 +2411,7 @@ AcDbLayerTableRecord
   2
 gantry_side
  70
-    5
+    4
  62
     7
   6

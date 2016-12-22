@@ -102,3 +102,5 @@ bed();
 y_hardware(gantry_position);
 
 
+translate([21,180,0])cube([12,30,724], center=true);
+translate([21,-180,0])cube([12,30,724], center=true);
