@@ -81,10 +81,10 @@ module main_base(){
 	color([0.7,0.5,0.0])translate([108.5,0,0])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
         import (file = "frame.dxf", layer = "base");
 
-    color([0.5,0.3,0.7])translate([80,-100,0])rotate([90,0,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+    color([0.5,0.3,0.7])translate([80,-140,0])rotate([90,0,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	    import (file = "frame.dxf", layer = "base_ribs");
 
-	color([0.5,0.3,0.7])translate([80,100,0])rotate([90,0,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	color([0.5,0.3,0.7])translate([80,140,0])rotate([90,0,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	    import (file = "frame.dxf", layer = "base_ribs");
 
 
@@ -97,10 +97,13 @@ module main_base(){
 main_base();
 gantry_base();
 
-translate([0,0,gantry_position])gantry(y_position, z_position);
+//translate([0,0,gantry_position])gantry(y_position, z_position);
 bed();
-y_hardware(gantry_position);
+//y_hardware(gantry_position);
 
 
-translate([21,180,0])cube([12,30,724], center=true);
-translate([21,-180,0])cube([12,30,724], center=true);
+translate([21,195,0])rotate([0,90,180])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "frame.dxf", layer = "base_dragchain_shelf");
+
+translate([21,-195,0])rotate([0,90,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "frame.dxf", layer = "base_dragchain_shelf");
