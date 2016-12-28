@@ -39,7 +39,7 @@ module side_rails(gantry_position=0){
 
 
 module y_hardware(gantry_position=0){
-	translate([77.5,0,-365])rotate([0,0,0])stepper_motor_mount(23);
+	translate([77.5,0,-374])rotate([0,0,0])stepper_motor_mount(23);
 	translate([77.5,0,0]){
 		rotate([0,0,90])leadscrew600mm();
 		rotate([0,0,-90])translate([0,0,gantry_position])sfu1604();
@@ -91,19 +91,24 @@ module main_base(){
 	color([0.7,0.5,0.3])translate([114.5,0,-356])rotate([0,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	    import (file = "frame.dxf", layer = "base_front");
 	color([0.7,0.5,0.3])translate([114.5,0,356])rotate([0,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-	    import (file = "frame.dxf", layer = "base_front");
+	    import (file = "frame.dxf", layer = "base_rear");
+
+
+	color([0.5,0.7,0.3])translate([114.5,0,-368])rotate([0,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "frame.dxf", layer = "base_motor_spacer");
+
+	translate([21,195,0])rotate([0,90,180])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+		    import (file = "frame.dxf", layer = "base_dragchain_shelf");
+
+	translate([21,-195,0])rotate([0,90,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+		    import (file = "frame.dxf", layer = "base_dragchain_shelf");
 }
 
-//main_base();
-//gantry_base();
+main_base();
+gantry_base();
 
 translate([0,0,gantry_position])gantry(y_position, z_position);
 //bed();
 //y_hardware(gantry_position);
 
 
-// translate([21,195,0])rotate([0,90,180])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-// 	    import (file = "frame.dxf", layer = "base_dragchain_shelf");
-
-// translate([21,-195,0])rotate([0,90,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-// 	    import (file = "frame.dxf", layer = "base_dragchain_shelf");

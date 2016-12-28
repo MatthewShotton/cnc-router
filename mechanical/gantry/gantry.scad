@@ -42,8 +42,19 @@ module gantry_wood(y_position=0, forward_offset=0){
 
 	translate([-232.5,y_position,forward_offset-42])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	    import (file = "../frame.dxf", layer = "head_top");
+
+	translate([-270,y_position,forward_offset-42])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "../frame.dxf", layer = "head_motor_mount");
+
+	color([0.3,0.7,0.5])translate([-257.25,y_position-45,forward_offset-1])rotate([90,0,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "../frame.dxf", layer = "head_motor_spacer");
+
+	color([0.3,0.7,0.5])translate([-257.25,y_position+45,forward_offset-1])rotate([90,0,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "../frame.dxf", layer = "head_motor_spacer");
+
+
 	translate([-57.5,y_position,forward_offset-42])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-	    import (file = "../frame.dxf", layer = "head_top");
+	    import (file = "../frame.dxf", layer = "head_bottom");
 	//translate([-191,0,forward_offset-77])cube(size=[10,400,10], center=true);
 	//translate([-145,y_position+50,forward_offset-50])cube(size=[163,12,60], center=true);
 
@@ -119,7 +130,7 @@ module gantry(y_position = 0, z_position=0){
 	color([0.5,0.8,0.2])translate([-109, 230, forward_offset-52])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	    import (file = "../frame.dxf", layer = "gantry_motor_mount_side");
 
-	translate([-275, y_position, forward_offset - 1])rotate([90,0,90])stepper_motor_mount(17);
+	translate([-276, y_position, forward_offset - 1])rotate([90,0,90])stepper_motor_mount(17);
 	translate([-145, 257, forward_offset-52])rotate([90,0,0])stepper_motor_mount(23);
 
 }
