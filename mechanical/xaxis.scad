@@ -94,16 +94,16 @@ module main_base(){
 	    import (file = "frame.dxf", layer = "base_front");
 }
 
-main_base();
-gantry_base();
+//main_base();
+//gantry_base();
 
-//translate([0,0,gantry_position])gantry(y_position, z_position);
-bed();
+translate([0,0,gantry_position])gantry(y_position, z_position);
+//bed();
 //y_hardware(gantry_position);
 
 
-translate([21,195,0])rotate([0,90,180])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-	    import (file = "frame.dxf", layer = "base_dragchain_shelf");
+// translate([21,195,0])rotate([0,90,180])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+// 	    import (file = "frame.dxf", layer = "base_dragchain_shelf");
 
-translate([21,-195,0])rotate([0,90,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-	    import (file = "frame.dxf", layer = "base_dragchain_shelf");
+// translate([21,-195,0])rotate([0,90,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+// 	    import (file = "frame.dxf", layer = "base_dragchain_shelf");

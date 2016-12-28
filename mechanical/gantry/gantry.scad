@@ -24,7 +24,7 @@ module nut() {
 
 module gantry_wood(y_position=0, forward_offset=0){
 	color([0.5,0.3,0.1])translate([-109,0,forward_offset-63])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-	    import (file = "../frame.dxf", layer = "gantry_top");
+	    import (file = "../frame.dxf", layer = "gantry_bottom");
 	color([0.5,0.3,0.1])translate([-181,0,forward_offset-63])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	    import (file = "../frame.dxf", layer = "gantry_top");
 
@@ -112,8 +112,15 @@ module gantry(y_position = 0, z_position=0){
 	translate([-145+z_position, y_position, forward_offset+57])rotate([90,0,90])spindle();
 	translate([-145+z_position, y_position, forward_offset+57])rotate([90,0,90])spindle_mount();
 
+	translate([-145, 251, forward_offset-52])rotate([90,0,0])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "../frame.dxf", layer = "gantry_motor_mount");
+
+
+	color([0.5,0.8,0.2])translate([-109, 230, forward_offset-52])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
+	    import (file = "../frame.dxf", layer = "gantry_motor_mount_side");
+
 	translate([-275, y_position, forward_offset - 1])rotate([90,0,90])stepper_motor_mount(17);
-	translate([-145, 254, forward_offset-52])rotate([90,0,0])stepper_motor_mount(23);
+	translate([-145, 257, forward_offset-52])rotate([90,0,0])stepper_motor_mount(23);
 
 }
 
