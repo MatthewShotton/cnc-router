@@ -108,7 +108,7 @@ main_base();
 gantry_base();
 
 translate([0,0,gantry_position])gantry(y_position, z_position);
-//bed();
-//y_hardware(gantry_position);
+bed();
+y_hardware(gantry_position);
 
 
