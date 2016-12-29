@@ -104,11 +104,15 @@ module main_base(){
 		    import (file = "frame.dxf", layer = "base_dragchain_shelf");
 }
 
-main_base();
-gantry_base();
 
-translate([0,0,gantry_position])gantry(y_position, z_position);
-bed();
-y_hardware(gantry_position);
+rotate([90,90,0]){
+	main_base();
+	gantry_base();
+	translate([0,0,gantry_position])gantry(y_position, z_position);
+	bed();
+	y_hardware(gantry_position);
+
+}
+
 
 
