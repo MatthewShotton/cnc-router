@@ -22,6 +22,23 @@ module nut() {
 }
 
 
+module nut_holder(){
+	difference(){
+		color([0.7,0.3,0.8])cube([20,24,24], center=true);
+
+		translate([0,0,0])rotate([90,0,90])cylinder(h=25, r=10.25/2, center=true, $fn=20);			
+		translate([0,8,0])rotate([90,0,90])cylinder(h=25, r=1.5, center=true, $fn=20);
+		translate([0,-8,0])rotate([90,0,90])cylinder(h=25, r=1.5, center=true, $fn=20);
+		translate([0,0,8])rotate([90,0,90])cylinder(h=25, r=1.5, center=true, $fn=20);
+		translate([0,0,-8])rotate([90,0,90])cylinder(h=25, r=1.5, center=true, $fn=20);
+
+		translate([0,8,0])rotate([0,0,90])cylinder(h=30, r=2, center=true, $fn=20);
+		translate([0,-8,0])rotate([0,0,90])cylinder(h=30, r=2, center=true, $fn=20);
+		translate([0,-8,-21])rotate([0,0,90])cylinder(h=30, r=3.5, center=true, $fn=20);
+		translate([0,8,-21])rotate([0,0,90])cylinder(h=30, r=3.5, center=true, $fn=20);
+	}
+}
+
 module gantry_wood(y_position=0, forward_offset=0){
 	color([0.5,0.3,0.1])translate([-109,0,forward_offset-63])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
 	    import (file = "../frame.dxf", layer = "gantry_bottom");
@@ -67,12 +84,6 @@ module gantry_wood(y_position=0, forward_offset=0){
 }
 
 module gantry(y_position = 0, z_position=0){
-	// translate([30,0,0])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-	// 	import (file = "parts.dxf", layer = "gantry-base");
-	// translate([36,223.5,0])rotate([0,-90,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-	// 	import (file = "parts.dxf", layer = "gantry-side");
-	// translate([36,-223.5,0])rotate([0,-90,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
-	// 	import (file = "parts.dxf", layer = "gantry-side");
 
 	forward_offset = -60;
 
@@ -96,8 +107,10 @@ module gantry(y_position = 0, z_position=0){
 	translate([-65.5,y_position,forward_offset-1])rotate([90,0,90])fl08();
 	translate([-224.5,y_position,forward_offset-1])rotate([-90,0,90])fl08();
 	
-	translate([-145+z_position,y_position,forward_offset-1]) nut();
-
+	translate([-145+z_position,y_position,forward_offset-1]){
+		nut();
+		translate([12,0,0])nut_holder();
+	}
 
 	color([0.8,0.8,0.8]){
 		translate([-145,y_position,forward_offset-1])rotate([-90,0,90])cylinder(h=200, r=4, center=true, $fn=20);
@@ -137,3 +150,5 @@ module gantry(y_position = 0, z_position=0){
 
 
 gantry();
+
+// nut_holder();

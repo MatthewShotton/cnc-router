@@ -75,6 +75,8 @@ module gantry_base(){
         import (file = "frame.dxf", layer = "gantry_base_main");
 	translate([57,0,gantry_position])rotate([90,0,90])linear_extrude(height = 12, center = true, convexity = 10, $fn=40)
         import (file = "frame.dxf", layer = "gantry_base_sides");
+
+
 }
 
 module main_base(){
@@ -105,13 +107,26 @@ module main_base(){
 }
 
 
+module gantry_spacer(){
+    translate([57-2.75,0,gantry_position])difference(){
+    	cube([6.5,51,39], center=true);
+    	rotate([0,0,90]){
+    	   	translate([19.5,6,12])rotate([90,0,0])cylinder(h=10, r=2, center=false, $fn=20);
+		   	translate([-19.5,6,12])rotate([90,0,0])cylinder(h=10, r=2, center=false, $fn=20);
+		   	translate([-19.5,6,-12])rotate([90,0,0])cylinder(h=10, r=2, center=false, $fn=20);
+		   	translate([19.5,6,-12])rotate([90,0,0])cylinder(h=10, r=2, center=false, $fn=20);
+    	}
+   }
+
+}
+
 rotate([90,90,0]){
 	main_base();
 	gantry_base();
 	translate([0,0,gantry_position])gantry(y_position, z_position);
 	bed();
 	y_hardware(gantry_position);
-
+	color([0.2,0.7,0.3])gantry_spacer();
 }
 
 
